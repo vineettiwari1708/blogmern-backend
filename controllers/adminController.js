@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 export const adminLogin = async (req, res) => {
 	try {
 		const { email, password } = req.body;
@@ -7,5 +8,9 @@ export const adminLogin = async (req, res) => {
 		) {
 			return res.json({ success: false, message: 'Invalid Credentials' });
 		}
-	} catch (error) {}
+		const token = jwt.sign({ email }, process.env.JWT_SECRET);
+		res.json({ success: true, token });
+	} catch (error) {
+		res.json({ success: false, message: error.message });
+	}
 };
