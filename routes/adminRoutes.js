@@ -1,7 +1,7 @@
 import express from 'express';
 import {
 	adminLogin,
-	approvedCommentById,
+	approveCommentById,
 	deleteCommentById,
 	getAllBlogsAdmin,
 	getAllComments,
@@ -12,10 +12,10 @@ import auth from '../middleware/auth.js';
 const adminRouter = express.Router();
 
 adminRouter.post('/login', adminLogin);
-adminRouter.get('/comments', auth, getAllComments);
+adminRouter.get('/comments', getAllComments);
 adminRouter.get('/blogs', auth, getAllBlogsAdmin);
-adminRouter.get('/delete-comment', auth, deleteCommentById);
-adminRouter.get('/approve-comment', auth, approvedCommentById);
+adminRouter.post('/delete-comment', auth, deleteCommentById);
+adminRouter.post('/approve-comment', auth, approveCommentById);
 adminRouter.get('/dashboard',auth, getDashboard);
 
 export default adminRouter;
