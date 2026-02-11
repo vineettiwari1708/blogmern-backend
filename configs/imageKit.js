@@ -1,4 +1,4 @@
-import ImageKit from 'imageKit'
+import ImageKit from 'imagekit'
 
 var imagekit=new ImageKit({
     privateKey:process.env.IMAGEKIT_PRIVATE_KEY,
